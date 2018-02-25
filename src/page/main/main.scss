@@ -1,0 +1,11 @@
+.home-center {
+    display: flex;
+    justify-content: space-between;
+    & > .home-router-view {
+      flex: 1;
+      .center-breadcrumb {
+        font-size: 16px;
+        padding: 12px 0 10px 40px;
+      }
+    }
+  }

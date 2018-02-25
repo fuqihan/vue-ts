@@ -2,8 +2,8 @@ import Vue from 'vue';
 import VueRouter, { Location, Route, RouteConfig } from 'vue-router';
 import { makeHot, reload } from '../util/hot-reload';
 import store from '../store'
-const homeComponent = () => import('../components/home').then(({ HomeComponent }) => HomeComponent);
-
+const LoginComponent = () => import('../page/login').then(({ LoginComponent }) => LoginComponent);
+const indexComponent = () => import('../page/main').then(({ IndexComponent }) => IndexComponent);
 // if (process.env.ENV === 'development' && module.hot) {
 //   const homeModuleId = './components/home';
 //   const aboutModuleId = './components/about';
@@ -26,22 +26,30 @@ Vue.use(VueRouter);
 export const routes: () => RouteConfig[] = () => [
   {
     path: '/',
-    component: homeComponent,
-  }
+    redirect: '/index'
+  },
+  {
+    path: '/index',
+    component: indexComponent,
+  },
+  {
+    path: '/login',
+    component: LoginComponent,
+  },
 ];
 
 const router = new VueRouter({ mode: 'history', routes: routes() })
 
-router.beforeEach((to, from, next) => {
-    if (!store.state.login) {
-      if (to.path !== '/login') {
-        next({path: '/login'})
-      } else {
-        next()
-      }
-    } else {
-      next()
-    }
-  })
+// router.beforeEach((to, from, next) => {
+//     if (!store.state.login) {
+//       if (to.path !== '/login') {
+//         next({path: '/login'})
+//       } else {
+//         next()
+//       }
+//     } else {
+//       next()
+//     }
+//   })
 
 export default router

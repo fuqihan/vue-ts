@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import { makeHot, reload } from './util/hot-reload';
-import { createRouter } from './router';
+import router from './router/';
 import store from './store';
 import * as Element from 'element-ui';
 
@@ -16,7 +16,7 @@ Vue.use(Element);
 
 new Vue({
   el: '#app-main',
-  router: createRouter(),
+  router: router,
   store,
   render: h => h(app)
 });

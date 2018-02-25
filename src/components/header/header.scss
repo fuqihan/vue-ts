@@ -1,0 +1,28 @@
+@import '../../sass/main.scss';
+
+.header {
+    height: 60px;
+    background-color: $themeColor;
+    .header-isMenu {
+      text-align: center;
+      color: white;
+      display: block;
+      width: 64px;
+      line-height: 60px;
+    }
+    .header-name {
+      color: white;
+      display: block;
+      font-size: 20px;
+      line-height: 60px;
+    }
+    .header-avatar-img {
+      margin-top: 5px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      float: right;
+      line-height: 60px;
+      margin-right: 50px;
+    }
+  }
