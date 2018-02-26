@@ -4,6 +4,8 @@ import { makeHot, reload } from '../util/hot-reload';
 import store from '../store'
 const LoginComponent = () => import('../page/login').then(({ LoginComponent }) => LoginComponent);
 const indexComponent = () => import('../page/main').then(({ IndexComponent }) => IndexComponent);
+const HomeComponent = () => import('../page/home').then(({ HomeComponent }) => HomeComponent);
+
 // if (process.env.ENV === 'development' && module.hot) {
 //   const homeModuleId = './components/home';
 //   const aboutModuleId = './components/about';
@@ -31,6 +33,17 @@ export const routes: () => RouteConfig[] = () => [
   {
     path: '/index',
     component: indexComponent,
+    children: [
+      {
+        path: '/',
+        redirect: 'home'
+      },
+      {
+        path: 'home',
+        name: '默认',
+        component: HomeComponent
+      },
+    ]
   },
   {
     path: '/login',
